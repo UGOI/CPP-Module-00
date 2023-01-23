@@ -144,7 +144,7 @@ void	Phonebook::add_contact()
 
 void	Phonebook::search_contact()
 {
-	int index = 0;
+	int index = -1;
 
 	system("clear");
 	std::cout << "     index|first name|last name |nickname" << std::endl;
@@ -173,11 +173,22 @@ void	Phonebook::search_contact()
 		std::cout << "	No contacts to display." << std::endl;
 		return ;
 	}
-	std::cout << "Enter index of contact to view: ";
-	std::string user_input;
-	getline(std::cin, user_input);
-	index = std::stoi(user_input);
-	if (index >= 0 && index < 8)
+	std::string user_input = "";
+	while (!(index >= 0 && index < 8 && contacts[index].get_is_empty() == false && user_input != ""))
+	{
+		std::cout << "Enter index of contact to view: " << std::endl;
+		getline(std::cin, user_input);
+		try
+		{
+			index = std::stoi(user_input);
+		}
+		catch(const std::exception& e)
+		{
+			index = -1;
+		}
+	}
+
+	if (index >= 0 && index < 8 && contacts[index].get_is_empty() == false)
 	{
 		system("clear");
 		std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
