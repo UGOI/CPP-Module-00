@@ -1,65 +1,5 @@
 #include <iostream>
-#include "./include/phonebook.hpp"
-
-void	Contact::set_first_name(std::string first_name)
-{
-	this->first_name = first_name;
-}
-
-std::string	Contact::get_first_name()
-{
-	return this->first_name;
-}
-
-void	Contact::set_last_name(std::string last_name)
-{
-	this->last_name = last_name;
-}
-
-std::string	Contact::get_last_name()
-{
-	return this->last_name;
-}
-
-void	Contact::set_nickname(std::string nickname)
-{
-	this->nickname = nickname;
-}
-
-std::string	Contact::get_nickname()
-{
-	return this->nickname;
-}
-
-void	Contact::set_phone_number(std::string phone_number)
-{
-	this->phone_number = phone_number;
-}
-
-std::string	Contact::get_phone_number()
-{
-	return this->phone_number;
-}
-
-void	Contact::set_darkest_secret(std::string darkest_secret)
-{
-	this->darkest_secret = darkest_secret;
-}
-
-std::string	Contact::get_darkest_secret()
-{
-	return this->darkest_secret;
-}
-
-void Contact::set_is_empty(bool is_empty)
-{
-	this->is_empty = is_empty;
-}
-
-bool Contact::get_is_empty()
-{
-	return this->is_empty;
-}
+#include "./include/Phonebook.hpp"
 
 void	Phonebook::set_is_empty(bool is_empty)
 {
@@ -197,31 +137,4 @@ void	Phonebook::search_contact()
 		std::cout << "Phone number: " << contacts[index].get_phone_number() << std::endl;
 		std::cout << "Darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
 	}
-}
-
-int main(int argc, char **argv)
-{
-	(void)argv;
-	std::string user_input = "NR";
-	if (argc != 1)
-		std::cout << "Run the program without arguments.";
-	else
-	{
-		Phonebook phonebook;
-		while (user_input != "EXIT")
-		{
-			std::cout << "Enter a command: ( ADD | SEARCH | EXIT )";
-			getline(std::cin, user_input);
-			if (user_input == "ADD")
-				phonebook.add_contact();
-			else if (user_input == "SEARCH")
-				phonebook.search_contact();
-			else if (user_input == "EXIT")
-				std::cout << "Exiting program..." << std::endl;
-			else
-				std::cout << "Invalid command." << std::endl;
-		}
-	}
-
-	return 0;
 }
